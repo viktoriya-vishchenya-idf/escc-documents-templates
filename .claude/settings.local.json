@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(gh auth *)",
+      "PowerShell($src = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\escc-docs-templates'; $dst = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\escc-docs-templates-viktoria'; robocopy $src $dst /E /XD .git .idea /NFL /NDL /NP; if \\($LASTEXITCODE -lt 8\\) { $global:LASTEXITCODE = 0; Write-Output \"Copy complete \\(robocopy code < 8 = success\\)\" } else { Write-Output \"Robocopy failed with code $LASTEXITCODE\" })"
+    ]
+  }
+}

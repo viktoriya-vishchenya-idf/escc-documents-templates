@@ -1,0 +1,19 @@
+{
+    "ownerId": "333771",
+    "templateName": "PRECONTRACT_PLAN_PRIME_DOCUMENT",
+    "idType": "BORROWER_ID",
+    "BORROWER_ID": "333771",
+    "creditAmount": 1000.00,
+    "productSettings": {
+        "tinPercent": 21.93,
+        "taePercent": 24.45,
+        "repaymentDateDay": 23,
+        "dueDateDay": 3,
+        "delinquencyDateDay": 4
+    },
+    "partnerData": {
+        "name": "Partner Example S.L.",
+        "address": "Calle Ejemplo 1, Madrid",
+        "vatNumber": "B12345678"
+    }
+}

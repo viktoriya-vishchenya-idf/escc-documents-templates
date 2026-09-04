@@ -1,0 +1,39 @@
+{
+    "borrowerId": 220114,
+    "creditId": 12541,
+    "creditLimit": 1500.00,
+    "statementSummary": {
+        "periodStartDate": "1 de julio de 2026",
+        "periodEndDate": "31 de julio de 2026",
+        "initialDate": "01 abril 2021",
+        "issueDate": "05 agosto 2026",
+        "borrowerFullName": "Ángela Patricia González Flórez",
+        "paymentMode": "Pago total",
+        "paymentAmount": 500.00,
+        "repaymentDate": "4 de septiembre de 2026",
+        "initialBalance": 100.00,
+        "totalDebits": "-500.00",
+        "totalCredits": "200.00",
+        "taeInterest": 19.99,
+        "interest": "-23.00",
+        "penalty": "30.00",
+        "finalBalance": "432.00"
+    },
+    "cStatement": {
+        "transactions": [
+            {"date": "10-jul.-2026", "description": "Compra X", "income": null, "outcome": 200.00, "type": "REGULAR"},
+            {"date": "12-jul.-2026", "description": "Comisión mensual", "income": null, "outcome": 5.00, "type": "COMMISSION"},
+            {"date": "15-jul.-2026", "description": "Intereses devengados", "income": null, "outcome": 23.00, "type": "INTEREST"},
+            {"date": "20-jul.-2026", "description": "Pago", "income": 100.00, "outcome": null, "type": "INCOME"},
+            {"date": "25-jul.-2026", "description": "Comisión IDF", "income": null, "outcome": 2.50, "type": "IDF_COMMISSION"}
+        ],
+        "totalDebits": "230.50",
+        "totalCredits": "100.00",
+        "isHeldSepa": false
+    },
+    "companyInfo": {
+        "name": "IDFINANCE PLAZO, S.L.U.",
+        "address": "C/ Tuset 5, 3 pl Barcelona",
+        "cif": "B-02.996.668"
+    }
+}

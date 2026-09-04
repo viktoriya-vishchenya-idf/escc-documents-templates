@@ -2,7 +2,32 @@
   "permissions": {
     "allow": [
       "PowerShell(gh auth *)",
-      "PowerShell($src = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\escc-docs-templates'; $dst = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\escc-docs-templates-viktoria'; robocopy $src $dst /E /XD .git .idea /NFL /NDL /NP; if \\($LASTEXITCODE -lt 8\\) { $global:LASTEXITCODE = 0; Write-Output \"Copy complete \\(robocopy code < 8 = success\\)\" } else { Write-Output \"Robocopy failed with code $LASTEXITCODE\" })"
+      "PowerShell($src = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\escc-docs-templates'; $dst = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\escc-docs-templates-viktoria'; robocopy $src $dst /E /XD .git .idea /NFL /NDL /NP; if \\($LASTEXITCODE -lt 8\\) { $global:LASTEXITCODE = 0; Write-Output \"Copy complete \\(robocopy code < 8 = success\\)\" } else { Write-Output \"Robocopy failed with code $LASTEXITCODE\" })",
+      "Read(//tmp/docx_extract/template_turron/word/**)",
+      "Bash(rm -rf /tmp/docx_extract/verify_turron)",
+      "Bash(unzip -o \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx\" -d /tmp/docx_extract/verify_turron)",
+      "Bash(unzip -t \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx\")",
+      "Bash(unzip -l \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx\")",
+      "Bash(python3 -c \"import zipfile; [print\\(n\\) for n in zipfile.ZipFile\\(r'C:\\\\\\\\Users\\\\\\\\User\\\\\\\\IdeaProjects\\\\\\\\private\\\\\\\\escc-documents-templates\\\\\\\\template\\\\\\\\agreement\\\\\\\\terms_and_conditions_turron_document.docx'\\).namelist\\(\\)]\")",
+      "Bash(unzip -l \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx.bak\")",
+      "PowerShell(Copy-Item *)",
+      "Bash(rm -rf /tmp/docx_extract/verify_final)",
+      "Bash(unzip -o \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx\" -d /tmp/docx_extract/verify_final)",
+      "Read(//tmp/docx_extract/verify_final/word/**)",
+      "Bash(rm *)",
+      "Bash(mkdir -p /tmp/docx_extract/original)",
+      "Bash(git show *)",
+      "Bash(unzip -o /tmp/docx_extract/original.docx -d /tmp/docx_extract/original)",
+      "Read(//tmp/docx_extract/original/**)",
+      "Bash(py --version)",
+      "Bash(ls /c/Program*/Python*)",
+      "Bash(perl *)",
+      "Bash(rm -rf /tmp/docx_extract/current)",
+      "Bash(unzip -o \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx\" -d /tmp/docx_extract/current)",
+      "Read(//tmp/docx_extract/current/word/**)",
+      "PowerShell($src = 'C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx'; try { $fs = [System.IO.File]::Open\\($src, [System.IO.FileMode]::Open, [System.IO.FileAccess]::ReadWrite, [System.IO.FileShare]::None\\); $fs.Close\\(\\); Write-Output 'file available \\(not locked now\\)' } catch { Write-Output \"still locked: $\\($_.Exception.Message\\)\" })",
+      "Bash(rm -rf /tmp/docx_extract/verify_pct)",
+      "Bash(unzip -o \"C:\\\\Users\\\\User\\\\IdeaProjects\\\\private\\\\escc-documents-templates\\\\template\\\\agreement\\\\terms_and_conditions_turron_document.docx\" -d /tmp/docx_extract/verify_pct)"
     ]
   }
 }

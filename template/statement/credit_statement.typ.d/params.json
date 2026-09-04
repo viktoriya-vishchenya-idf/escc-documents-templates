@@ -1,0 +1,34 @@
+{
+    "borrowerId": 12541,
+    "creditId": 41254,
+    "creditLimit": 1500.00,
+    "statementSummary": {
+        "periodStartDate": "1 de julio de 2026",
+        "periodEndDate": "31 de julio de 2026",
+        "initialDate": "01 marzo 2026",
+        "issueDate": "05 agosto 2026",
+        "borrowerFullName": "Ángela Patricia González Flórez",
+        "paymentMode": "Pago total",
+        "paymentAmount": 500.00,
+        "repaymentDate": "04 de agosto de 2026",
+        "initialBalance": 100.00,
+        "totalDebits": "-500.00",
+        "totalCredits": "200.00",
+        "taeInterest": 19.99,
+        "interest": "-23.00",
+        "penalty": "30.00",
+        "finalBalance": "432.00"
+    },
+    "cStatement": {
+        "transactions": [
+            {"date": "10-jul", "description": "Compra X", "income": null, "outcome": 200.00, "type": "REGULAR"},
+            {"date": "12-jul", "description": "Comisión mensual", "income": null, "outcome": 5.00, "type": "COMMISSION"},
+            {"date": "15-jul", "description": "Intereses devengados para el periodo del 1 de julio de 2026 al 31 de julio de 2026", "income": null, "outcome": 23.00, "type": "INTEREST"},
+            {"date": "20-jul", "description": "Pago", "income": 100.00, "outcome": null, "type": "INCOME"},
+            {"date": "25-jul", "description": "Comisión IDF", "income": null, "outcome": 2.50, "type": "IDF_COMMISSION"}
+        ],
+        "totalDebits": "230.50",
+        "totalCredits": "100.00",
+        "isHeldSepa": false
+    }
+}

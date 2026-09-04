@@ -3,6 +3,12 @@
 // возвращает плоский словарь; отсутствующие ключи — none, числа — в
 // испанском формате. В body: #vars.CLIENT_NUMBER, #vars.FINAL_BALANCE...
 //
+// Значения в соседнем params.json взяты из колонки "Example" таблицы
+// LD-3.11 на Confluence (borrowerId=220114, creditId=12541, periodo del
+// extracto 01 abril 2021 — 05 abril 2024, суммы -500/200/23/30/432 €
+// и т.д.) — фикстура ложится в шаблон 1-в-1 с документированным
+// примером, чтобы preview.pdf было верифицируемо против LD.
+//
 // Оригинал запроса — DebtSaleSummaryStatementTemplate:
 // {
 //   "borrowerId": 220114,

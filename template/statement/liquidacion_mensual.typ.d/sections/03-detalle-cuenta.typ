@@ -56,7 +56,7 @@
         )).flatten(),
         // итоги
         table.cell(fill: color-section-bg, colspan: 2)[
-            #text(weight: "bold")[Total del periodo]
+            #text(weight: "bold")[Total]
         ],
         table.cell(fill: color-section-bg, align: right)[
             #text(weight: "bold")[#vars.CA_TOTAL_DEBITS]

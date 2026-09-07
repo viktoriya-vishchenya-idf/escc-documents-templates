@@ -15,7 +15,7 @@
 }
 
 #let detalle-aplazo(vars) = [
-    #sectionTitle[Detalle de aplazo]
+    #sectionTitle[DETALLE HISTÓRICO DE MOVIMIENTOS]
     #v(0.3em)
 
     #table(

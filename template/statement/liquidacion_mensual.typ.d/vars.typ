@@ -144,10 +144,8 @@
         YEAR:  period.year,
         PERIOD_START: get(ss, "periodStartDate"),
         PERIOD_END:   get(ss, "periodEndDate"),
-        ISSUE_DATE:   get(ss, "issueDate"),
 
         BORROWER_FULL_NAME: get(ss, "borrowerFullName"),
-        PAYMENT_MODE:       get(ss, "paymentMode"),
         PAYMENT_AMOUNT:     fmt-eur(get(ss, "paymentAmount")),
         REPAYMENT_DATE:     get(ss, "repaymentDate"),
 

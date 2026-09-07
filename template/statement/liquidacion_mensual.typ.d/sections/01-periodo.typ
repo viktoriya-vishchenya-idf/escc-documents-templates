@@ -11,7 +11,6 @@
         stroke: none,
         ..kv-row("Periodo del extracto",
             [Del #vars.PERIOD_START al #vars.PERIOD_END]),
-        ..kv-row("Modalidad de pago",  vars.PAYMENT_MODE),
         ..kv-row("Fecha del próximo pago", vars.REPAYMENT_DATE),
         ..kv-row("Importe del próximo pago", vars.PAYMENT_AMOUNT),
     )

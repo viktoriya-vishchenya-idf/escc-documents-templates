@@ -32,7 +32,6 @@
             ]),
             ..kv-row("Titular",         vars.BORROWER_FULL_NAME),
             ..kv-row("Nº de cliente",   vars.CLIENT_NUMBER),
-            ..kv-row("Fecha emisión",   vars.ISSUE_DATE),
         ),
         // Datos del crédito
         table(

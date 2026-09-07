@@ -1,12 +1,15 @@
 #import "../common/default_styles.typ": (
     color-title, color-body,
 )
+#import "../common/table_styles.typ": numbered-section-title
 
-// Раздел определений (LD-2.39 v4). В отличие от монтли-варианта,
-// в LD-2.39 v4 нет фиолетового заголовка «DEFINICIONES DE LOS CONCEPTOS»
-// — определения идут отдельными абзацами. Оставляем без section title,
-// чтобы визуально совпадать с эталонной PDF.
+// Section 4 — DEFINICIONES DE LOS CONCEPTOS (LD-2.39 v4, DOCX-выверено).
+// Название раздела короче варианта LD-2.16 — совпадает с DOCX-исходником
+// накопительной выписки. Далее 9 статичных испанских определений.
 #let definiciones() = [
+    #numbered-section-title("4", "DEFINICIONES DE LOS CONCEPTOS")
+    #v(0.5em)
+
     #let concept(title, body) = [
         #text(weight: "bold", fill: color-title)[#title]
         #v(0.1em)

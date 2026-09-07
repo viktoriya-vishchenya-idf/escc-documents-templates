@@ -111,6 +111,7 @@
         //  interest      → интерес € (внутренняя строка резюме)
         //  penalty       → Comisiones acumuladas (если != 0)
         //  finalBalance  → Saldo dispuesto actual
+        INITIAL_BALANCE: fmt-eur(get(ss, "initialBalance")),
         TOTAL_DEBITS:   fmt-eur(get(ss, "totalDebits")),
         TOTAL_CREDITS:  fmt-eur(get(ss, "totalCredits")),
         TAE_INTEREST:   fmt-pct(get(ss, "taeInterest")),

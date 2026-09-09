@@ -10,9 +10,11 @@
     body-size,
 )
 
-// Компаундный заголовок раздела LD-2.39 v4:
-// маленькая фиолетовая ячейка с номером слева + название справа.
-// Извлечено из DOCX (столбцы 559/9641 dxa, соотношение ~5%/95%).
+// Компаундный заголовок раздела LD-2.39 v4.
+// Тех.спец §1/§4:
+//   Section number: Inter 13pt/700/#5B3FA8 centered on fill #CFBDFA.
+//   Section title:  Inter 13pt/700/#0F0F0F uppercase, tracking 20 (=1pt).
+// Ширина колонок 559/9641 twips ≈ 5%/95%.
 #let numbered-section-title(num, title) = block(
     width: 100%,
     table(

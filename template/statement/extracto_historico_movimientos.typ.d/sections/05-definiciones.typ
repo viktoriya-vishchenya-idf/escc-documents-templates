@@ -1,20 +1,31 @@
 #import "../common/default_styles.typ": (
-    color-title, color-body,
+    color-title, color-body, color-secondary, color-section-bg,
 )
 #import "../common/table_styles.typ": numbered-section-title
 
-// Section 4 — DEFINICIONES DE LOS CONCEPTOS (LD-2.39 v4, DOCX-выверено).
-// Название раздела короче варианта LD-2.16 — совпадает с DOCX-исходником
-// накопительной выписки. Далее 9 статичных испанских определений.
+// Section 4 — DEFINICIONES DE LOS CONCEPTOS + final warning block.
+// TZ_ExtractoHistoricoMovimientosPLAZO §8 / §9 / §10:
+//   Definitions: 8 items, ЯВНЫЙ font override "Segoe UI" (не Inter).
+//     Title: Segoe UI 11.5pt/700/#0F0F0F (не фиолетовый — TZ §1).
+//     Body:  Segoe UI 11pt/400/#3A4150.
+//   Warning block ("Por qué la deuda revolving puede no bajar"):
+//     Отдельный блок ПОСЛЕ definitions, fill #EFE9FB (color-section-bg).
+//     Heading: Inter 11.5pt/700/#5B3FA8.
+//     Body:    Inter 11pt/400/#5B3FA8.
+//     Continuous visual block (heading + body в одном block).
 #let definiciones() = [
     #numbered-section-title("4", "DEFINICIONES DE LOS CONCEPTOS")
     #v(0.5em)
 
+    // Definitions block — explicit Segoe UI override per TZ §14
+    // ("Definitions must explicitly use Segoe UI").
+    #set text(font: ("Segoe UI", "Helvetica"))
+
     #let concept(title, body) = [
-        #text(weight: "bold", fill: color-title)[#title]
+        #text(weight: "bold", fill: color-body, size: 11.5pt)[#title]
         #v(0.1em)
-        #text(fill: color-body)[#body]
-        #v(0.5em)
+        #text(fill: color-secondary, size: 11pt)[#body]
+        #v(0.6em)
     ]
 
     #concept(
@@ -49,8 +60,22 @@
         "Crédito disponible",
         [Parte del límite que aún no está dispuesta y que el titular puede seguir utilizando. Equivale al límite de crédito concedido menos el saldo dispuesto; en el revolving vuelve a aumentar a medida que se amortiza capital.],
     )
-    #concept(
-        "Por qué la deuda revolving puede no bajar",
-        [El orden de aplicación de la cuota explica el principal riesgo de este producto. Como cada pago cubre primero intereses y comisiones, y solo después amortiza capital, una cuota baja frente a un saldo elevado reduce poco la deuda.],
-    )
+
+    // Warning block — separate from definitions per TZ §10.
+    // Font сбрасываем обратно на Inter (default), фон #EFE9FB, весь текст #5B3FA8.
+    #v(0.4em)
+    #set text(font: ("Inter", "Segoe UI", "Helvetica"))
+    #block(
+        fill: color-section-bg,
+        inset: (x: 12pt, y: 12pt),
+        radius: 3pt,
+        width: 100%,
+    )[
+        #text(fill: color-title, weight: "bold", size: 11.5pt)[Por qué la deuda revolving puede no bajar]
+
+        #v(0.4em)
+        #text(fill: color-title, size: 11pt)[
+            El orden de aplicación de la cuota explica el principal riesgo de este producto. Como cada pago cubre primero intereses y comisiones, y solo después amortiza capital, una cuota baja frente a un saldo elevado reduce poco la deuda.
+        ]
+    ]
 ]

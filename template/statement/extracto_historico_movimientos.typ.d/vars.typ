@@ -114,6 +114,7 @@
         INITIAL_BALANCE: fmt-eur(get(ss, "initialBalance")),
         TOTAL_DEBITS:   fmt-eur(get(ss, "totalDebits")),
         TOTAL_CREDITS:  fmt-eur(get(ss, "totalCredits")),
+        TIN_INTEREST:   fmt-pct(get(ss, "tinInterest")),
         TAE_INTEREST:   fmt-pct(get(ss, "taeInterest")),
         INTEREST:       fmt-eur(get(ss, "interest")),
         PENALTY:        fmt-eur(get(ss, "penalty")),

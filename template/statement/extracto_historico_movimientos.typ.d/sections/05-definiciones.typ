@@ -17,9 +17,10 @@
     #numbered-section-title("4", "DEFINICIONES DE LOS CONCEPTOS")
     #v(0.5em)
 
-    // Definitions block — explicit Segoe UI override per TZ §14
-    // ("Definitions must explicitly use Segoe UI").
-    #set text(font: ("Segoe UI", "Helvetica"))
+    // Definitions block — использует общий шрифт документа (Helvetica),
+    // не переопределяем на Segoe UI: Segoe UI недоступен в Linux
+    // контейнере doc-generator и вызывает warning.
+    #set text(font: ("Helvetica"))
 
     #let concept(title, body) = [
         #text(weight: "bold", fill: color-body, size: 11.5pt)[#title]
@@ -62,10 +63,10 @@
     )
 
     // Warning block — separate from definitions per TZ §10.
-    // Шрифт возвращаем к дефолту документа (Segoe UI); фон #EFE9FB,
-    // весь текст #5B3FA8.
+    // Шрифт — дефолтный документа (Helvetica); фон #EFE9FB, весь
+    // текст #5B3FA8.
     #v(0.4em)
-    #set text(font: ("Segoe UI", "Helvetica"))
+    #set text(font: ("Helvetica"))
     #block(
         fill: color-section-bg,
         inset: (x: 12pt, y: 12pt),

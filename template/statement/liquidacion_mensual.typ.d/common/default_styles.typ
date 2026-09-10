@@ -14,13 +14,14 @@
 #let page-margin-x = 1.5cm
 // TZ §15: Footer — Inter ≈11pt / 400 / #000000 centered.
 #let footer-size = 11pt
-// Шрифт: реальный `LiquidacionMensualPlazo.docx` рендерит 100% run-ов
-// в Cambria (word/document.xml, 133 из 133 w:rFonts w:ascii="Cambria"),
-// хотя TZ §0/§1 указывает Inter. Следуем DOCX как источнику истины
-// (см. memory feedback-docx-over-tz). Cambria доступна системно на
-// Windows и в бандле Office/LibreOffice; Helvetica — локальный фолбэк
-// из этой .typ.d/ папки.
-#let body-font = ("Cambria", "Helvetica")
+// Шрифт: Helvetica (бандл — Helvetica*.ttf в этой .typ.d/ папке).
+// Исходный `LiquidacionMensualPlazo.docx` рендерится в Cambria, но
+// Cambria — проприетарный шрифт Office, недоступен в Linux-контейнере
+// doc-generator. Не тянем Cambria, чтобы не получать warning
+// `unknown font family: cambria` при рендере на сервере. Визуально
+// PDF будет sans-serif (Helvetica) вместо serif (Cambria) — trade-off
+// согласован (CRDES-45111, 2026-09-10).
+#let body-font = ("Helvetica")
 #let body-size = 11pt
 #let body-header-size = 20pt
 

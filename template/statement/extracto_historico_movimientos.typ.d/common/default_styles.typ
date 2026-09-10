@@ -13,14 +13,14 @@
 #let page-margin-x = 1.5cm
 // TZ §11: Footer — Inter ≈11pt / 400 / #000000 centered.
 #let footer-size = 11pt
-// Шрифт: реальный `ExtractoHistoricoMovimientosPLAZO.docx` рендерит
-// 100% run-ов в Segoe UI (word/document.xml, 32 из 32 w:rFonts
-// w:ascii="Segoe UI"), хотя TZ §0/§1 указывает Inter, а styles.xml
-// Normal — тоже Inter (styles-уровень; на run-ах уже переопределено).
-// Следуем DOCX как источнику истины (см. memory feedback-docx-over-tz).
-// Segoe UI — системный шрифт Windows / доступен во всех современных
-// сборках; Helvetica — локальный фолбэк из этой .typ.d/ папки.
-#let body-font = ("Segoe UI", "Helvetica")
+// Шрифт: Helvetica (бандл — Helvetica*.ttf в этой .typ.d/ папке).
+// Исходный `ExtractoHistoricoMovimientosPLAZO.docx` рендерится в
+// Segoe UI, но Segoe UI — проприетарный шрифт Microsoft, недоступен
+// в Linux-контейнере doc-generator. Не тянем Segoe UI, чтобы не
+// получать warning `unknown font family: segoe ui` при рендере на
+// сервере. Визуально PDF остаётся sans-serif (близко к Segoe UI по
+// пропорциям) — trade-off согласован (CRDES-45111, 2026-09-10).
+#let body-font = ("Helvetica")
 #let body-size = 11pt
 #let body-header-size = 20pt
 

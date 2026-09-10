@@ -13,12 +13,14 @@
 #let page-margin-x = 1.5cm
 // TZ §11: Footer — Inter ≈11pt / 400 / #000000 centered.
 #let footer-size = 11pt
-// Тех.спец CRDES-45111 (TZ_ExtractoHistoricoMovimientosPLAZO.docx, §0/§1):
-//   Default font: Inter 11pt / 400 (Normal style).
-//   Definitions use explicit Segoe UI override (см. 05-definiciones.typ).
-// Inter*.ttf кладётся рядом с Helvetica*.ttf в этой .typ.d/ папке;
-// при отсутствии — фолбэк на системный Segoe UI / бандл Helvetica.
-#let body-font = ("Inter", "Segoe UI", "Helvetica")
+// Шрифт: реальный `ExtractoHistoricoMovimientosPLAZO.docx` рендерит
+// 100% run-ов в Segoe UI (word/document.xml, 32 из 32 w:rFonts
+// w:ascii="Segoe UI"), хотя TZ §0/§1 указывает Inter, а styles.xml
+// Normal — тоже Inter (styles-уровень; на run-ах уже переопределено).
+// Следуем DOCX как источнику истины (см. memory feedback-docx-over-tz).
+// Segoe UI — системный шрифт Windows / доступен во всех современных
+// сборках; Helvetica — локальный фолбэк из этой .typ.d/ папки.
+#let body-font = ("Segoe UI", "Helvetica")
 #let body-size = 11pt
 #let body-header-size = 20pt
 

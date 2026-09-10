@@ -62,9 +62,10 @@
     )
 
     // Warning block — separate from definitions per TZ §10.
-    // Font сбрасываем обратно на Inter (default), фон #EFE9FB, весь текст #5B3FA8.
+    // Шрифт возвращаем к дефолту документа (Segoe UI); фон #EFE9FB,
+    // весь текст #5B3FA8.
     #v(0.4em)
-    #set text(font: ("Inter", "Segoe UI", "Helvetica"))
+    #set text(font: ("Segoe UI", "Helvetica"))
     #block(
         fill: color-section-bg,
         inset: (x: 12pt, y: 12pt),

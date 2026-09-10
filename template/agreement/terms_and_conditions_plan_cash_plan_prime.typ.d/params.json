@@ -1,0 +1,33 @@
+{
+    "ownerId": "333771",
+    "templateName": "TERMS_AND_CONDITIONS_PLAN_PRIME_DOCUMENT",
+    "idType": "BORROWER_ID",
+    "BORROWER_ID": "333771",
+    "creditAmount": 1000.00,
+    "agreementDate": "01/01/2026",
+    "borrower": {
+        "names": {
+            "firstName": "Juan",
+            "firstLastName": "García",
+            "secondLastName": "López"
+        },
+        "dni": "12345678Z",
+        "email": "juan.garcia@example.com",
+        "phone": "600000000",
+        "address": {
+            "city": "Barcelona",
+            "street": "Calle Tuset",
+            "houseNumber": "5",
+            "apartment": "3",
+            "zipCode": "08006"
+        }
+    },
+    "productSettings": {
+        "tinPercent": 21.93,
+        "taePercent": 24.45,
+        "repaymentDateDay": 23,
+        "dueDateDay": 3,
+        "delinquencyDateDay": 4
+    },
+    "experiments": ["SPLIT_DELINQUENCY_FEE_42660_B"]
+}

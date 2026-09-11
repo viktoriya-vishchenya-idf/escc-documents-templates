@@ -12,8 +12,12 @@
 //   BORDER         #E6EAF0  horizontal borders
 
 #let page-margin-x = 1.5cm
-// TZ §15: Footer — Inter ≈11pt / 400 / #000000 centered.
-#let footer-size = 11pt
+// TZ §15: Footer — Inter 8pt / 400 / #6B7280 centered.
+// Source DOCX ships 11pt black Inter and fits on one line — but with the
+// Inter→Helvetica substitution (Helvetica is wider) the 106-char corporate
+// line overflows the 510pt usable width at 11pt. 8pt grey matches TZ letter
+// and per-user "more dim" ask (CRDES-45111, 2026-09-11).
+#let footer-size = 8pt
 // Шрифт: Helvetica (бандл — Helvetica*.ttf в этой .typ.d/ папке).
 // Исходный `LiquidacionMensualPlazo.docx` рендерится в Cambria, но
 // Cambria — проприетарный шрифт Office, недоступен в Linux-контейнере
@@ -69,7 +73,7 @@
         paper: "a4",
         margin: 1.5cm,
         footer: align(center)[
-            #set text(size: footer-size, fill: rgb("#000000"))
+            #set text(size: footer-size, fill: color-grey-title)
             IDFinance Plazo, S.L.U. · C/ Tuset 5, 3º, 08006 Barcelona · clientes\@plazo.es · 93 522 26 26 / 900 533 861
         ],
     )

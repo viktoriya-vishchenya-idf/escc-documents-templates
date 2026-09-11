@@ -3,23 +3,10 @@
 )
 #import "../common/table_styles.typ": numbered-section-title
 
-// Section 4 — DEFINICIONES DE LOS CONCEPTOS + final warning block.
-// TZ_ExtractoHistoricoMovimientosPLAZO §8 / §9 / §10:
-//   Definitions: 8 items, ЯВНЫЙ font override "Segoe UI" (не Inter).
-//     Title: Segoe UI 11.5pt/700/#0F0F0F (не фиолетовый — TZ §1).
-//     Body:  Segoe UI 11pt/400/#3A4150.
-//   Warning block ("Por qué la deuda revolving puede no bajar"):
-//     Отдельный блок ПОСЛЕ definitions, fill #EFE9FB (color-section-bg).
-//     Heading: Inter 11.5pt/700/#5B3FA8.
-//     Body:    Inter 11pt/400/#5B3FA8.
-//     Continuous visual block (heading + body в одном block).
 #let definiciones() = [
     #numbered-section-title("4", "DEFINICIONES DE LOS CONCEPTOS")
     #v(0.5em)
 
-    // Definitions block — использует общий шрифт документа (Helvetica),
-    // не переопределяем на Segoe UI: Segoe UI недоступен в Linux
-    // контейнере doc-generator и вызывает warning.
     #set text(font: ("Helvetica"))
 
     #let concept(title, body) = [
@@ -62,9 +49,6 @@
         [Parte del límite que aún no está dispuesta y que el titular puede seguir utilizando. Equivale al límite de crédito concedido menos el saldo dispuesto; en el revolving vuelve a aumentar a medida que se amortiza capital.],
     )
 
-    // Warning block — separate from definitions per TZ §10.
-    // Шрифт — дефолтный документа (Helvetica); фон #EFE9FB, весь
-    // текст #5B3FA8.
     #v(0.4em)
     #set text(font: ("Helvetica"))
     #block(

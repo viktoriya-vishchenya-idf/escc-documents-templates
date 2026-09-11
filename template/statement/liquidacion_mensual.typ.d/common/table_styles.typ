@@ -10,11 +10,6 @@
     body-size,
 )
 
-// Компаундный заголовок раздела LD-2.16 v7.
-// TZ §4/§7/§9/§12:
-//   Section number: Inter 13pt/700/#5B3FA8 centered on fill #CFBDFA.
-//   Section title:  Inter 13pt/700/#0F0F0F uppercase, tracking 20 (=1pt).
-// Ширина колонок 559/9641 twips ≈ 5%/95%.
 #let numbered-section-title(num, title) = block(
     width: 100%,
     table(
@@ -32,9 +27,6 @@
     ),
 )
 
-// Строка "метка (серым) — значение (жирным чёрным)" на светло-сером фоне.
-// (унаследовано; больше не используется в шаблоне после DOCX-выравнивания,
-//  оставлено на случай сторонних импортов).
 #let kv-row(label, value) = (
     table.cell(fill: color-grey-bg)[
         #text(fill: color-grey-title, weight: "bold", size: 10pt, label)
@@ -44,7 +36,6 @@
     ],
 )
 
-// (устаревшее) старая двухколоночная сводка — не используется в DOCX-варианте.
 #let summary-row(label, value) = (
     table.cell(fill: color-section-bg)[
         #text(weight: "bold", size: 11pt, label)
@@ -54,7 +45,6 @@
     ],
 )
 
-// (устаревшее) итоговая строка старой сводки — не используется.
 #let summary-total-row(label, value) = (
     table.cell(fill: color-title-bg)[
         #text(fill: color-title, weight: "bold", size: 12pt, label)

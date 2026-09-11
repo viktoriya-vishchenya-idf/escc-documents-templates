@@ -4,14 +4,6 @@
 )
 #import "../common/table_styles.typ": numbered-section-title
 
-// Section 3 — DETALLE HISTÓRICO DE MOVIMIENTOS.
-// TZ_ExtractoHistoricoMovimientosPLAZO §7:
-//   Header row: fill #F1F5F9, Inter 8pt/700/#6B7280 uppercase, tracking 20 (=1pt).
-//   Body rows: no fill (Inter 11pt default), horizontal borders #E6EAF0.
-//   Total row: Inter 11.5pt/700 with fill #F1F5F9; first two columns merged.
-//   Column split: 2400/4400/1699/1701 twips ≈ 23.53%/43.14%/16.66%/16.67%.
-//
-// LD-3.11: DEBIT → OPERACIONES, CREDIT → ABONOS. Формат суммы "XX,XX €".
 #let fmt-amount(v) = {
     if v == none { "" }
     else if type(v) == float or type(v) == int {
@@ -56,7 +48,6 @@
             body-cell([#fmt-amount(t.at("outcome", default: none))], align-right: true),
             body-cell([#fmt-amount(t.at("income",  default: none))], align-right: true),
         )).flatten(),
-        // Total row — fill #F1F5F9, Inter 11.5pt/700, first two cols merged.
         table.cell(
             fill: color-grey-bg,
             colspan: 2,

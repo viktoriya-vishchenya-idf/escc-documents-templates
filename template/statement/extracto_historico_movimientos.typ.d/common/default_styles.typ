@@ -1,29 +1,5 @@
-// Палитра и типографика LD-2.39 v4 — извлечено из DOCX-исходника
-// (ExtractoHistoricoMovimientosPLAZO.docx):
-//   акцентный фиолетовый текст            #5B3FA8
-//   акцентный фиолетовый фон              #CFBDFA
-//   светло-фиолетовый фон                 #EFE9FB
-//   грey метки колонок                    #6B7280
-//   светло-серый фон ячеек                #F1F5F9
-//   почти-белый фон карточек              #FBFCFE
-//   рамки таблиц                          #E6EAF0
-//   тело / основной текст                 #0F0F0F
-//   вторичный тёмно-серый (подзаголовок)  #3A4150
-
 #let page-margin-x = 1.5cm
-// TZ §11: Footer — Inter 8pt / 400 / #6B7280 centered.
-// Source DOCX ships 11pt black Inter and fits on one line — but with the
-// Inter→Helvetica substitution (Helvetica is wider) the 106-char corporate
-// line overflows the 510pt usable width at 11pt. 8pt grey matches TZ letter
-// and per-user "more dim" ask (CRDES-45111, 2026-09-11).
 #let footer-size = 8pt
-// Шрифт: Helvetica (бандл — Helvetica*.ttf в этой .typ.d/ папке).
-// Исходный `ExtractoHistoricoMovimientosPLAZO.docx` рендерится в
-// Segoe UI, но Segoe UI — проприетарный шрифт Microsoft, недоступен
-// в Linux-контейнере doc-generator. Не тянем Segoe UI, чтобы не
-// получать warning `unknown font family: segoe ui` при рендере на
-// сервере. Визуально PDF остаётся sans-serif (близко к Segoe UI по
-// пропорциям) — trade-off согласован (CRDES-45111, 2026-09-10).
 #let body-font = ("Helvetica")
 #let body-size = 11pt
 #let body-header-size = 20pt
@@ -38,10 +14,6 @@
 #let color-body = rgb("#0F0F0F")
 #let color-secondary = rgb("#3A4150")
 
-// Плашка-заголовок раздела (фиолетовая): текст #5B3FA8 на #CFBDFA.
-// Тех.спец §1 / §2: Credit bar — Inter 13pt/700/#5B3FA8 fill #CFBDFA.
-// Используется как первичный REVOLVING-баннер под заголовком.
-// Компаундный номерной заголовок — см. numbered-section-title в table_styles.typ.
 #let sectionTitle(body) = block(
     fill: color-title-bg,
     inset: (x: 10pt, y: 8pt),
@@ -50,10 +22,6 @@
     text(fill: color-title, weight: "bold", size: 13pt, body),
 )
 
-// Метка колонки/строки таблицы в сером стиле.
-// Тех.спец §1 / §3: card labels — Inter 8pt/700/#6B7280 uppercase, tracking 24
-// (OOXML twips → typst pt: 24/20 = 1.2pt). Table headers используют tracking 20
-// (=1pt) — устанавливается инлайн в конкретной секции.
 #let greyLabel(body) = text(
     fill: color-grey-title,
     weight: "bold",
@@ -62,12 +30,6 @@
     upper(body),
 )
 
-// Обёртка страницы: поля 1.5см со всех сторон (TZ §0).
-// Логотип "plazo" рендерится ИНЛАЙН в теле первой страницы (внутри
-// cabecera), а не через page.header — чтобы страницы 2/3 не повторяли
-// его (per user 2026-09-09: "Logo PLAZO should be only on first page").
-// Футер — корпоративная строка контактов, центрированная, на всех
-// страницах (TZ §11).
 #let document(doc-code: "", doc) = {
     set page(
         paper: "a4",
@@ -86,9 +48,6 @@
     )
     set par(justify: false, leading: 0.85em, spacing: .7em)
 
-    // Общий стиль таблиц: тонкая рамка #E6EAF0, левое выравнивание.
-    // Отдельные таблицы (шапка, resumen) переопределяют stroke: none
-    // и рисуют только верх/низ вручную, если требуется по дизайну.
     set table(
         stroke: 0.5pt + color-border,
         inset: 6pt,

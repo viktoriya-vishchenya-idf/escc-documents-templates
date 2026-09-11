@@ -1,7 +1,5 @@
 #import "../common/default_styles.typ": color-section-bg, color-title
 
-// LD-3.3, <hold_flag>: показываем только если borrower в ON_HOLD
-// (isHeldSepa == true).
 #let hold-sepa(vars) = if vars.IS_HELD_SEPA [
     #v(0.6em)
     #block(

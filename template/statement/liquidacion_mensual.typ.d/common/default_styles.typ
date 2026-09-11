@@ -1,34 +1,8 @@
-// Палитра и типографика LD-2.16 v7 / TZ_LiquidacionMensualPlazo.docx —
-// извлечено из исходного DOCX (LiquidacionMensualPlazo.docx) и TZ §16:
-//   BLACK_PRIMARY  #0F0F0F  headings / values
-//   BLACK          #000000  footer
-//   TEXT_SECONDARY #3A4150  descriptions / period subtitle
-//   LABEL_GRAY     #6B7280  labels / table headers
-//   BRAND_PURPLE   #5B3FA8  purple text (numbers, credit bar text, negative payments)
-//   PURPLE_FILL    #CFBDFA  section numbers / credit bar background
-//   LIGHT_PURPLE   #EFE9FB  final balance / warning block fill
-//   TABLE_HEADER   #F1F5F9  summary/movements header + total row fill
-//   CARD_BG        #FBFCFE  client / status cards fill
-//   BORDER         #E6EAF0  horizontal borders
-
 #let page-margin-x = 1.5cm
-// TZ §15: Footer — Inter 8pt / 400 / #6B7280 centered.
-// Source DOCX ships 11pt black Inter and fits on one line — but with the
-// Inter→Helvetica substitution (Helvetica is wider) the 106-char corporate
-// line overflows the 510pt usable width at 11pt. 8pt grey matches TZ letter
-// and per-user "more dim" ask (CRDES-45111, 2026-09-11).
 #let footer-size = 8pt
-// Шрифт: Helvetica (бандл — Helvetica*.ttf в этой .typ.d/ папке).
-// Исходный `LiquidacionMensualPlazo.docx` рендерится в Cambria, но
-// Cambria — проприетарный шрифт Office, недоступен в Linux-контейнере
-// doc-generator. Не тянем Cambria, чтобы не получать warning
-// `unknown font family: cambria` при рендере на сервере. Визуально
-// PDF будет sans-serif (Helvetica) вместо serif (Cambria) — trade-off
-// согласован (CRDES-45111, 2026-09-10).
 #let body-font = ("Helvetica")
 #let body-size = 11pt
 #let body-header-size = 20pt
-
 #let color-title = rgb("#5B3FA8")
 #let color-title-bg = rgb("#CFBDFA")
 #let color-section-bg = rgb("#EFE9FB")
@@ -39,11 +13,6 @@
 #let color-body = rgb("#0F0F0F")
 #let color-secondary = rgb("#3A4150")
 
-// Плашка-заголовок раздела (фиолетовая): текст #5B3FA8 на #CFBDFA.
-// TZ §2 Credit bar — Inter 13pt/700/#5B3FA8 fill #CFBDFA.
-// Используется как REVOLVING-баннер под подзаголовком периода.
-// Компаундный номерной заголовок разделов — см. numbered-section-title
-// в table_styles.typ.
 #let sectionTitle(body) = block(
     fill: color-title-bg,
     inset: (x: 10pt, y: 8pt),
@@ -52,9 +21,6 @@
     text(fill: color-title, weight: "bold", size: 13pt, body),
 )
 
-// Метка колонки/строки таблицы в сером стиле.
-// TZ §1/§3: labels — Inter 8pt/700/#6B7280 uppercase, tracking 24 twips
-// (OOXML twips → typst pt: 24/20 = 1.2pt).
 #let greyLabel(body) = text(
     fill: color-grey-title,
     weight: "bold",
@@ -63,11 +29,6 @@
     upper(body),
 )
 
-// Обёртка страницы: поля 1.5см со всех сторон (TZ §0).
-// Логотип "plazo" рендерится ИНЛАЙН в теле первой страницы (внутри
-// cabecera), а не через page.header — чтобы страницы 2/... не повторяли
-// его. Футер — корпоративная строка контактов, центрированная, на всех
-// страницах (TZ §15).
 #let document(doc-code: "", doc) = {
     set page(
         paper: "a4",
@@ -86,9 +47,6 @@
     )
     set par(justify: false, leading: 0.85em, spacing: .7em)
 
-    // Общий стиль таблиц: тонкая рамка #E6EAF0, левое выравнивание.
-    // Отдельные секции переопределяют stroke: none и рисуют только
-    // горизонтальные линии, где TZ этого требует (§10/§19).
     set table(
         stroke: 0.5pt + color-border,
         inset: 6pt,

@@ -3,11 +3,6 @@
 )
 #import "../common/table_styles.typ": numbered-section-title
 
-// Section 4 — DEFINICIONES DE LOS CONCEPTOS DEL RESUMEN DEL MES
-// (LD-2.16 v7, TZ §12/§13).
-// Список 8 определений: title — Inter 11.5pt/700/#0F0F0F, body — Inter
-// 11pt/400/#3A4150 (TZ §13 "Same" в колонке Typography: 11.5/700 title +
-// 11/400 body). Разделитель между записями — 0.5em вертикально.
 #let definiciones() = [
     #numbered-section-title("4", "Definiciones de los conceptos del resumen del mes")
     #v(0.4em)
@@ -53,10 +48,6 @@
     )
 ]
 
-// Final warning block (TZ §14). Отдельная секция ниже definiciones,
-// не входит в нумерованные разделы. Плашка на светло-фиолетовой заливке
-// #EFE9FB (TZ §16 "LIGHT_PURPLE ... Final balance / warning"), heading
-// 11.5pt/700/#5B3FA8, body 11pt/400/#5B3FA8.
 #let advertencia-revolving() = block(
     fill: color-section-bg,
     inset: (x: 12pt, y: 10pt),

@@ -31,8 +31,6 @@
 
 #let fmt-pct(v) = if v == none { none } else { fmt-num(v) + " %" }
 
-// Las fechas llegan como LocalDate ISO (yyyy-MM-dd); el formato en castellano
-// se decide aquí, no en el backend.
 #let MONTHS_ES = (
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
     "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
@@ -92,10 +90,6 @@
     let start = parse-date(periodStart)
     let end = parse-date(periodEnd)
 
-    // Un periodo que empieza el día 1 y acaba dentro del mismo mes es un mes
-    // natural y se nombra por el mes. Cualquier otro (facturación a mitad de
-    // mes) cruza dos meses, donde "mes año" induciría a error, y se muestra
-    // como rango de fechas.
     let isCalendarMonth = (
         start.day == 1 and start.month == end.month and start.year == end.year
     )

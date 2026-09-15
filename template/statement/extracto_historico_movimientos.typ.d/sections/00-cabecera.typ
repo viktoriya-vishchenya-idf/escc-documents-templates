@@ -36,24 +36,17 @@
         #text(fill: color-grey-title, weight: "bold", size: 13pt)[#value]
     ]
 
-    #let empty-cell(stroke: none) = table.cell(
-        fill: color-cell-bg,
-        inset: (x: 10pt, y: 8pt),
-        stroke: stroke,
-    )[]
-
-    #let stroke-top    = (top: 0.5pt + color-border, bottom: none)
-    #let stroke-bottom = (top: none, bottom: 0.5pt + color-border)
+    #let stroke-both = (
+        top: 0.5pt + color-border,
+        bottom: 0.5pt + color-border,
+    )
 
     #table(
         columns: (1fr, 1fr, 1fr),
         stroke: none,
         inset: 0pt,
-        card-cell("TITULAR",     vars.BORROWER_FULL_NAME, stroke: stroke-top),
-        card-cell("Nº CLIENTE",  vars.CLIENT_NUMBER,      stroke: stroke-top),
-        card-cell("CONTRATO Nº", vars.CREDIT_NUMBER,      stroke: stroke-top),
-        card-cell("TIN:", vars.TIN_INTEREST, stroke: stroke-bottom),
-        card-cell("TAE:", vars.TAE_INTEREST, stroke: stroke-bottom),
-        empty-cell(stroke: stroke-bottom),
+        card-cell("TITULAR",     vars.BORROWER_FULL_NAME, stroke: stroke-both),
+        card-cell("Nº CLIENTE",  vars.CLIENT_NUMBER,      stroke: stroke-both),
+        card-cell("CONTRATO Nº", vars.CREDIT_NUMBER,      stroke: stroke-both),
     )
 ]

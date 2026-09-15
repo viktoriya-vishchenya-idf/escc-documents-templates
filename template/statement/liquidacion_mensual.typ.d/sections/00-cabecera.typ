@@ -9,12 +9,12 @@
     #v(0.6cm)
 
     #text(fill: color-body, weight: "bold", size: body-header-size)[
-        Liquidación Mensual: #vars.MONTH #vars.YEAR
+        Liquidación Mensual: #vars.PERIOD_LABEL
     ]
 
     #v(0.3em)
     #text(fill: color-secondary, size: 12pt)[
-        Período de liquidación #vars.PERIOD_START - #vars.PERIOD_END
+        Período de liquidación #vars.PERIOD_START — #vars.PERIOD_END
     ]
 
     #v(0.8em)

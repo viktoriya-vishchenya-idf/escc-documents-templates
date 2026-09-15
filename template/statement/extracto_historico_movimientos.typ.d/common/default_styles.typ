@@ -36,7 +36,7 @@
         margin: 1.5cm,
         footer: align(center)[
             #set text(size: footer-size, fill: color-grey-title)
-            IDFinance Plazo, S.L.U. · C/ Tuset 5, 3º, 08006 Barcelona · clientes\@plazo.es · 93 522 26 26 / 900 533 861
+            ID Finance Plazo, S.L.U. · C/ Tuset 5, 3º, 08006 Barcelona · clientes\@plazo.es · 93 522 26 26 / 900 533 861
         ],
     )
     set text(

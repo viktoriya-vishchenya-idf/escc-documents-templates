@@ -3,10 +3,10 @@
     "creditId": 41254,
     "creditLimit": 1500.00,
     "statementSummary": {
-        "periodStartDate": "1 de febrero de 2025",
-        "periodEndDate": "28 de febrero de 2025",
-        "initialDate": "01 febrero 2025",
-        "issueDate": "01 marzo 2025",
+        "periodStartDate": "2025-02-01",
+        "periodEndDate": "2025-02-28",
+        "initialDate": "2025-02-01",
+        "issueDate": "2025-03-01",
         "borrowerFullName": "Ángela Patricia González Flórez",
         "paymentMode": "Pago total",
         "paymentAmount": 500.00,
@@ -21,7 +21,7 @@
     },
     "cStatement": {
         "transactions": [
-            {"date": "10-ago", "description": "Compra X", "income": null, "outcome": 200.00, "type": "REGULAR"}
+            {"date": "2025-08-10", "description": "Compra X", "income": null, "outcome": 200.00, "type": "REGULAR"}
         ],
         "totalDebits": "500.00",
         "totalCredits": "200.00",

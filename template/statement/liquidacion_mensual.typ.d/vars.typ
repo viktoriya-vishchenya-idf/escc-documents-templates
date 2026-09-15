@@ -31,16 +31,48 @@
 
 #let fmt-pct(v) = if v == none { none } else { fmt-num(v) + " %" }
 
-#let split-period(dateStr) = {
-    if dateStr == none {
-        (month: none, year: none)
+// Las fechas llegan como LocalDate ISO (yyyy-MM-dd); el formato en castellano
+// se decide aquí, no en el backend.
+#let MONTHS_ES = (
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+)
+#let MONTHS_ES_SHORT = (
+    "ene", "feb", "mar", "abr", "may", "jun",
+    "jul", "ago", "sept", "oct", "nov", "dic",
+)
+
+#let parse-date(value) = {
+    let empty = (day: none, month: none, year: none)
+    if value == none or str(value).match(regex("^\d{4}-\d{2}-\d{2}$")) == none {
+        empty
     } else {
-        let parts = dateStr.split(" de ")
-        if parts.len() >= 3 {
-            (month: parts.at(1), year: parts.at(2))
+        let parts = str(value).split("-")
+        let month = int(parts.at(1))
+        if month < 1 or month > 12 {
+            empty
         } else {
-            (month: none, year: none)
+            (day: int(parts.at(2)), month: month, year: int(parts.at(0)))
         }
+    }
+}
+
+#let fmt-date(value, pad: false) = {
+    let date = parse-date(value)
+    if date.day == none {
+        none
+    } else {
+        let day = if pad and date.day < 10 { "0" + str(date.day) } else { str(date.day) }
+        day + " de " + MONTHS_ES.at(date.month - 1) + " de " + str(date.year)
+    }
+}
+
+#let fmt-trx-date(value) = {
+    let date = parse-date(value)
+    if date.day == none {
+        none
+    } else {
+        str(date.day) + " " + MONTHS_ES_SHORT.at(date.month - 1)
     }
 }
 
@@ -55,7 +87,29 @@
 
     let ss = get(vars, "statementSummary", default: (:))
     let cs = get(vars, "cStatement", default: (:))
-    let period = split-period(get(ss, "periodStartDate"))
+    let periodStart = get(ss, "periodStartDate")
+    let periodEnd = get(ss, "periodEndDate")
+    let start = parse-date(periodStart)
+    let end = parse-date(periodEnd)
+
+    // Un periodo que empieza el día 1 y acaba dentro del mismo mes es un mes
+    // natural y se nombra por el mes. Cualquier otro (facturación a mitad de
+    // mes) cruza dos meses, donde "mes año" induciría a error, y se muestra
+    // como rango de fechas.
+    let isCalendarMonth = (
+        start.day == 1 and start.month == end.month and start.year == end.year
+    )
+    let periodLabel = {
+        if start.day == none {
+            none
+        } else if isCalendarMonth {
+            MONTHS_ES.at(start.month - 1) + " " + str(start.year)
+        } else if end.day == none {
+            none
+        } else {
+            "Periodo del " + fmt-date(periodStart) + " al " + fmt-date(periodEnd)
+        }
+    }
 
     let creditLimit = get(vars, "creditLimit")
     let finalBalanceStr = get(ss, "finalBalance")
@@ -79,10 +133,9 @@
         CREDIT_LIMIT:  fmt-eur(creditLimit),
         AVAILABLE_LIMIT: fmt-eur(availableLimit),
 
-        MONTH: period.month,
-        YEAR:  period.year,
-        PERIOD_START: get(ss, "periodStartDate"),
-        PERIOD_END:   get(ss, "periodEndDate"),
+        PERIOD_LABEL: periodLabel,
+        PERIOD_START: fmt-date(periodStart),
+        PERIOD_END:   fmt-date(periodEnd),
 
         BORROWER_FULL_NAME: get(ss, "borrowerFullName"),
         PAYMENT_AMOUNT:     fmt-eur(get(ss, "paymentAmount")),
@@ -96,7 +149,8 @@
         PENALTY:         fmt-eur(get(ss, "penalty")),
         FINAL_BALANCE:   fmt-eur(finalBalanceStr),
 
-        TRANSACTIONS:      get(cs, "transactions", default: ()),
+        TRANSACTIONS: get(cs, "transactions", default: ())
+            .map(t => t + (date: fmt-trx-date(t.at("date", default: none)))),
         CA_TOTAL_DEBITS:   fmt-eur(get(cs, "totalDebits")),
         CA_TOTAL_CREDITS:  fmt-eur(get(cs, "totalCredits")),
         IS_HELD_SEPA:      get(cs, "isHeldSepa", default: false),

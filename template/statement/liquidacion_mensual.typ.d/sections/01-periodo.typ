@@ -64,21 +64,23 @@
         #text(fill: color-body, weight: "bold", size: 16pt)[#value]
     ]
 
-    #table(
-        columns: (1fr, 1fr),
-        stroke: none,
-        inset: 0pt,
-        column-gutter: 0.4em,
-        row-gutter: 0.4em,
-        // Row A
-        big-card("CANTIDAD A PAGAR", vars.PAYMENT_AMOUNT),
-        date-card("PRÓXIMO PAGO", vars.REPAYMENT_DATE),
-        // Row B
-        big-card-with-subtitle(
-            "LÍMITE DE CRÉDITO CONCEDIDO",
-            vars.CREDIT_LIMIT,
-            "IMPORTE MÁXIMO DISPONIBLE SEGÚN CONTRATO",
-        ),
-        big-card("CRÉDITO DISPONIBLE", vars.AVAILABLE_LIMIT),
-    )
+    #block(breakable: false)[
+        #table(
+            columns: (1fr, 1fr),
+            stroke: none,
+            inset: 0pt,
+            column-gutter: 0.4em,
+            row-gutter: 0.4em,
+            // Row A
+            big-card("CANTIDAD A PAGAR", vars.PAYMENT_AMOUNT),
+            date-card("PRÓXIMO PAGO", vars.REPAYMENT_DATE),
+            // Row B
+            big-card-with-subtitle(
+                "LÍMITE DE CRÉDITO CONCEDIDO",
+                vars.CREDIT_LIMIT,
+                "IMPORTE MÁXIMO DISPONIBLE SEGÚN CONTRATO",
+            ),
+            big-card("CRÉDITO DISPONIBLE", vars.AVAILABLE_LIMIT),
+        )
+    ]
 ]

@@ -12,10 +12,10 @@
         "paymentAmount": 500.00,
         "repaymentDate": "4 de septiembre de 2021",
         "initialBalance": 100.00,
-        "totalDebits": "-500.00",
+        "totalDebits": "500.00",
         "totalCredits": "200.00",
         "taeInterest": 19.99,
-        "interest": "-23.00",
+        "interest": "23.00",
         "penalty": "30.00",
         "finalBalance": "432.00"
     },

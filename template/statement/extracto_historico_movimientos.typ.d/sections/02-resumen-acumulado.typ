@@ -35,16 +35,6 @@
         ),
 
         table.cell(stroke: (bottom: 0.5pt + color-border))[
-            #text(fill: color-body, weight: "bold", size: 11.5pt)[Saldo dispuesto inicial (apertura)]
-        ],
-        table.cell(align: right, stroke: (bottom: 0.5pt + color-border))[
-            #text(weight: "bold", size: 11.5pt)[#vars.INITIAL_BALANCE]
-        ],
-        table.cell(stroke: (bottom: 0.5pt + color-border))[
-            #text(fill: color-secondary, size: 11pt)[Saldo dispuesto en la apertura del contrato.]
-        ],
-
-        table.cell(stroke: (bottom: 0.5pt + color-border))[
             #text(fill: color-body, weight: "bold", size: 11.5pt)[(+) Disposiciones acumuladas]
         ],
         table.cell(align: right, stroke: (bottom: 0.5pt + color-border))[

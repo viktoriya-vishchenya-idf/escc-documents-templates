@@ -28,6 +28,28 @@
     }
 }
 
+#let fmt-eur-abs(v) = {
+    if v == none {
+        none
+    } else if type(v) == str {
+        fmt-eur(v.trim().trim("-", at: start))
+    } else if type(v) == int or type(v) == float {
+        fmt-eur(calc.abs(v))
+    } else {
+        fmt-eur(v)
+    }
+}
+
+#let fmt-eur-neg(v) = {
+    let magnitude = fmt-eur-abs(v)
+    if magnitude == none {
+        none
+    } else {
+        let n = if type(v) == str { float(v.replace(",", ".")) } else { float(v) }
+        if n == 0 { magnitude } else { "-" + magnitude }
+    }
+}
+
 #let fmt-pct(v) = if v == none { none } else { fmt-num(v) + " %" }
 
 #let MONTHS_ES = (
@@ -115,11 +137,11 @@
         PAYMENT_AMOUNT:     fmt-eur(get(ss, "paymentAmount")),
 
         INITIAL_BALANCE: fmt-eur(get(ss, "initialBalance")),
-        TOTAL_DEBITS:   fmt-eur(get(ss, "totalDebits")),
-        TOTAL_CREDITS:  fmt-eur(get(ss, "totalCredits")),
+        TOTAL_DEBITS:   fmt-eur-abs(get(ss, "totalDebits")),
+        TOTAL_CREDITS:  fmt-eur-neg(get(ss, "totalCredits")),
         TAE_INTEREST:   fmt-pct(get(ss, "taeInterest")),
-        INTEREST:       fmt-eur(get(ss, "interest")),
-        PENALTY:        fmt-eur(get(ss, "penalty")),
+        INTEREST:       fmt-eur-abs(get(ss, "interest")),
+        PENALTY:        fmt-eur-abs(get(ss, "penalty")),
         FINAL_BALANCE:  fmt-eur(finalBalanceStr),
 
         TRANSACTIONS: get(cs, "transactions", default: ())

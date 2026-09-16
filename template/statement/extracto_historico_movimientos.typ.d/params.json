@@ -21,7 +21,7 @@
     },
     "cStatement": {
         "transactions": [
-            {"date": "10-agosto-2021", "description": "Compra X", "income": null, "outcome": 200.00, "type": "REGULAR"}
+            {"date": "2021-08-10", "description": "Compra X", "income": null, "outcome": 200.00, "type": "REGULAR"}
         ],
         "totalDebits": "500.00",
         "totalCredits": "200.00",

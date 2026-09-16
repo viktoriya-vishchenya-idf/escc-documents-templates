@@ -34,40 +34,42 @@
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
     "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
 )
+#let MONTHS_ES_SHORT = (
+    "ene", "feb", "mar", "abr", "may", "jun",
+    "jul", "ago", "sept", "oct", "nov", "dic",
+)
 
-#let fmt-date(value, pad: false) = {
+#let parse-date(value) = {
+    let empty = (day: none, month: none, year: none)
     if value == none or str(value).match(regex("^\d{4}-\d{2}-\d{2}$")) == none {
-        none
+        empty
     } else {
         let parts = str(value).split("-")
         let month = int(parts.at(1))
         if month < 1 or month > 12 {
-            none
+            empty
         } else {
-            let dayNumber = int(parts.at(2))
-            let day = if pad and dayNumber < 10 { "0" + str(dayNumber) } else { str(dayNumber) }
-            day + " de " + MONTHS_ES.at(month - 1) + " de " + parts.at(0)
+            (day: int(parts.at(2)), month: month, year: int(parts.at(0)))
         }
     }
 }
 
-
-#let TRX_MONTHS_ES = (
-    "enero.": "ene", "feb.": "feb", "marzo": "mar", "abr.": "abr",
-    "mayo": "may", "jun.": "jun", "jul.": "jul", "agosto": "ago",
-    "sept.": "sept", "oct.": "oct", "nov.": "nov", "dic.": "dic",
-)
-
-#let fmt-trx-date(value) = {
-    if value == none {
+#let fmt-date(value, pad: false) = {
+    let date = parse-date(value)
+    if date.day == none {
         none
     } else {
-        let parts = str(value).split("-")
-        if parts.len() >= 2 {
-            parts.at(0) + " " + TRX_MONTHS_ES.at(parts.at(1), default: parts.at(1))
-        } else {
-            str(value)
-        }
+        let day = if pad and date.day < 10 { "0" + str(date.day) } else { str(date.day) }
+        day + " de " + MONTHS_ES.at(date.month - 1) + " de " + str(date.year)
+    }
+}
+
+#let fmt-trx-date(value) = {
+    let date = parse-date(value)
+    if date.day == none {
+        none
+    } else {
+        str(date.day) + " " + MONTHS_ES_SHORT.at(date.month - 1)
     }
 }
 

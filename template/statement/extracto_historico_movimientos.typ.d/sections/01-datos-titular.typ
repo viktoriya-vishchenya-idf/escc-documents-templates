@@ -43,7 +43,7 @@
         inset: 0pt,
         align: top + left,
         cell("Cantidad a pagar", vars.PAYMENT_AMOUNT),
-        cell("Próximo pago",     vars.REPAYMENT_DATE, value-size: 16pt),
+        cell("Próximo pago",     vars.REPAYMENT_DATE),
         cell("Límite de crédito concedido", vars.CREDIT_LIMIT, caption: "Importe máximo disponible según contrato"),
         cell("Crédito disponible", vars.AVAILABLE_LIMIT),
     )

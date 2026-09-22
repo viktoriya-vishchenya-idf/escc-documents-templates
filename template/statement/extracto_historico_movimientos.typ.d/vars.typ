@@ -126,6 +126,15 @@
     }
 }
 
+#let fmt-repayment-day(value) = {
+    let day = fmt-day(value)
+    if day == none or day == "" {
+        none
+    } else {
+        day + "º día de cada mes"
+    }
+}
+
 #let normalize(vars) = {
     let get = (dict, key, default: none) => {
         if type(dict) == dictionary and key in dict and dict.at(key) != none {
@@ -160,7 +169,7 @@
         ISSUE_DATE:   fmt-date(get(ss, "issueDate"), pad: true),
 
         BORROWER_FULL_NAME: get(ss, "borrowerFullName"),
-        REPAYMENT_DATE:     fmt-day(get(ss, "repaymentDate")),
+        REPAYMENT_DATE:     fmt-repayment-day(get(ss, "repaymentDate")),
         PAYMENT_AMOUNT:     fmt-eur(get(ss, "paymentAmount")),
 
         INITIAL_BALANCE: fmt-eur(get(ss, "initialBalance")),

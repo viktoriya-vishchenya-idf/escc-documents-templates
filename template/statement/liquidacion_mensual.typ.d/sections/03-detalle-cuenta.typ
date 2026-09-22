@@ -2,16 +2,9 @@
     color-title, color-grey-title, color-grey-bg, color-border, color-body,
 )
 #import "../common/table_styles.typ": numbered-section-title
+#import "../vars.typ": fmt-eur
 
-#let fmt-amount(v) = {
-    if v == none { "" }
-    else if type(v) == float or type(v) == int {
-        let s = str(v).replace(".", ",")
-        s + " €"
-    } else {
-        str(v).replace(".", ",") + " €"
-    }
-}
+#let fmt-amount(v) = if v == none { "" } else { fmt-eur(v) }
 
 #let detalle-cuenta(vars) = [
     #numbered-section-title("3", "Detalle de movimientos del periodo")

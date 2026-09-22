@@ -69,6 +69,7 @@
             columns: (1fr, 1fr),
             stroke: none,
             inset: 0pt,
+            align: top + left,
             column-gutter: 0.4em,
             row-gutter: 0.4em,
             // Row A

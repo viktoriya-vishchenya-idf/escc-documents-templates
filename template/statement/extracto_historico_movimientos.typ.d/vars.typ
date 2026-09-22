@@ -14,17 +14,34 @@
     }
 }
 
-#let fmt-eur(v) = {
-    if v == none {
+#let fmt-amount-2dp(value) = {
+    if value == none {
         none
-    } else if type(v) == str {
-        v.replace(".", ",") + " €"
-    } else if type(v) == int {
-        str(v) + " €"
-    } else if type(v) == float {
-        str(v).replace(".", ",") + " €"
     } else {
-        str(v) + " €"
+        let raw = if type(value) == str { value.trim() } else { str(value) }
+        let text = raw.replace("\u{2212}", "-").replace(",", ".")
+        if text.match(regex("^-?\d+(\.\d+)?$")) == none {
+            text
+        } else {
+            let signed = str(calc.round(decimal(text), digits: 2))
+            let rounded = signed.replace("\u{2212}", "-")
+            let negative = rounded.starts-with("-")
+            let digits = if negative { rounded.slice(1) } else { rounded }
+            let parts = digits.split(".")
+            let cents = if parts.len() > 1 { parts.at(1) } else { "" }
+            let padding = "00".slice(0, calc.max(0, 2 - cents.len()))
+            let amount = parts.at(0) + "." + cents + padding
+            if negative { "-" + amount } else { amount }
+        }
+    }
+}
+
+#let fmt-eur(v) = {
+    let amount = fmt-amount-2dp(v)
+    if amount == none {
+        none
+    } else {
+        amount.replace(".", ",") + " €"
     }
 }
 
@@ -113,12 +130,8 @@
         if creditLimit == none or finalBalanceStr == none {
             none
         } else {
-            let fb = float(str(finalBalanceStr).replace(",", "."))
-            let lim = if type(creditLimit) == str {
-                float(creditLimit.replace(",", "."))
-            } else {
-                float(creditLimit)
-            }
+            let fb = decimal(str(finalBalanceStr).replace(",", "."))
+            let lim = decimal(str(creditLimit).replace(",", "."))
             lim - fb
         }
     }

@@ -3,15 +3,9 @@
     color-border, color-body,
 )
 #import "../common/table_styles.typ": numbered-section-title
+#import "../vars.typ": fmt-eur
 
-#let fmt-amount(v) = {
-    if v == none { "" }
-    else if type(v) == float or type(v) == int {
-        str(v).replace(".", ",") + " €"
-    } else {
-        str(v).replace(".", ",") + " €"
-    }
-}
+#let fmt-amount(v) = if v == none { "" } else { fmt-eur(v) }
 
 #let detalle-aplazo(vars) = [
     #numbered-section-title("3", "DETALLE HISTÓRICO DE MOVIMIENTOS")

@@ -45,6 +45,7 @@
         columns: (1fr, 1fr, 1fr),
         stroke: none,
         inset: 0pt,
+        align: top + left,
         card-cell("TITULAR",     vars.BORROWER_FULL_NAME, stroke: stroke-both),
         card-cell("Nº CLIENTE",  vars.CLIENT_NUMBER,      stroke: stroke-both),
         card-cell("CONTRATO Nº", vars.CREDIT_NUMBER,      stroke: stroke-both),
